@@ -1,9 +1,11 @@
 import app from "./api/app"
+import { Config } from "./Config"
 
-app.listen(process.env.PORTA, () =>{
-    console.log(`aplicação iniciada na porta ${process.env.PORTA}`)
+app.listen(Config.API.PORT, () =>{
+    console.log(`aplicação iniciada no endereço ${Config.API.HOST}:${Config.API.PORT}`)
     console.log(`ROTAS: 
-        POST ${process.env.HOST}:${process.env.PORTA}/api/dialogue
+        POST ${Config.API.HOST}:${Config.API.PORT}/api/dialogue
+        POST ${Config.API.HOST}:${Config.API.PORT}/api/ai
         `)
 
 })

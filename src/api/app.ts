@@ -2,7 +2,7 @@
 require("dotenv-safe").config({silent: true});
 
 // importando rotas
-import dialogueRoutes from "./routes/dialogueRoutes";
+import aiRoutes from "./routes/aiRoutes";
 
 //importando core da api
 import * as express from "express"
@@ -18,6 +18,6 @@ app.use(express.json())
 app.use(cors())
 
 //utilizando rotas da api
-app.use("/api", dialogueRoutes) 
+app.use("/api", aiRoutes) 
 
 export default app

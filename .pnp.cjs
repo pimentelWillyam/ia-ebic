@@ -31,7 +31,7 @@ const RAW_RUNTIME_STATE =
           ["@types/body-parser", "npm:1.19.6"],\
           ["@types/cors", "npm:2.8.19"],\
           ["@types/express", "npm:4.17.25"],\
-          ["@types/node", "npm:18.19.130"],\
+          ["@types/node", "npm:25.2.1"],\
           ["@typescript-eslint/eslint-plugin", "virtual:b9b68a03a821085e5fa8a7178c5cd9ac4ee9e30a14b20ea8680b12ea5f302ebb3d06dfeaa12958c3312df4424b055a201ba05ff410da1834f5b74bd445425a21#npm:5.62.0"],\
           ["ai-ebic", "workspace:."],\
           ["body-parser", "npm:1.20.4"],\
@@ -1653,14 +1653,6 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@types/node", [\
-      ["npm:18.19.130", {\
-        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/@types-node-npm-18.19.130-df6d3a4ff9-10c0.zip/node_modules/@types/node/",\
-        "packageDependencies": [\
-          ["@types/node", "npm:18.19.130"],\
-          ["undici-types", "npm:5.26.5"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:25.2.1", {\
         "packageLocation": "../../AppData/Local/Yarn/Berry/cache/@types-node-npm-25.2.1-a138d77c79-10c0.zip/node_modules/@types/node/",\
         "packageDependencies": [\
@@ -2070,7 +2062,7 @@ const RAW_RUNTIME_STATE =
           ["@types/body-parser", "npm:1.19.6"],\
           ["@types/cors", "npm:2.8.19"],\
           ["@types/express", "npm:4.17.25"],\
-          ["@types/node", "npm:18.19.130"],\
+          ["@types/node", "npm:25.2.1"],\
           ["@typescript-eslint/eslint-plugin", "virtual:b9b68a03a821085e5fa8a7178c5cd9ac4ee9e30a14b20ea8680b12ea5f302ebb3d06dfeaa12958c3312df4424b055a201ba05ff410da1834f5b74bd445425a21#npm:5.62.0"],\
           ["ai-ebic", "workspace:."],\
           ["body-parser", "npm:1.20.4"],\
@@ -7395,7 +7387,7 @@ const RAW_RUNTIME_STATE =
           ["@tsconfig/node12", "npm:1.0.11"],\
           ["@tsconfig/node14", "npm:1.0.3"],\
           ["@tsconfig/node16", "npm:1.0.4"],\
-          ["@types/node", "npm:18.19.130"],\
+          ["@types/node", "npm:25.2.1"],\
           ["@types/swc__core", null],\
           ["@types/swc__wasm", null],\
           ["@types/typescript", null],\
@@ -7656,13 +7648,6 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["undici-types", [\
-      ["npm:5.26.5", {\
-        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/undici-types-npm-5.26.5-de4f7c7bb9-10c0.zip/node_modules/undici-types/",\
-        "packageDependencies": [\
-          ["undici-types", "npm:5.26.5"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:7.16.0", {\
         "packageLocation": "../../AppData/Local/Yarn/Berry/cache/undici-types-npm-7.16.0-0e23b08124-10c0.zip/node_modules/undici-types/",\
         "packageDependencies": [\
