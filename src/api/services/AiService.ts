@@ -1,29 +1,55 @@
 import { Response, Request } from "express"
+import axios from "axios"
 import { Config } from "../../Config"
 
 class AiService {
   async sendText(req: Request, res: Response) {
-    const userPrompt = req.body.prompt ?? "Oi"
+    try {
+      console.log('chegou aq')
+      const userPrompt = req.body.prompt ?? "Oi"
+      console.log("localhost:11434/api/generate")
 
-    const ollamaRes = await fetch(Config.AI.URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: Config.AI.MODEL,
-        prompt: userPrompt,
-        stream: false,
-      }),
-    })
 
-    const data = await ollamaRes.json()
+      const ollamaRes = await axios.post(
+        Config.AI.URL+'/api/generate',
+        {
+          model: Config.AI.MODEL,
+          prompt: "oi",
+          stream: false,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
 
-    res.status(200).json({
-      answer: data.response,
-    })
+      const data = ollamaRes.data
+
+      res.status(200).json({
+        answer: data.response,
+        model: data.model,
+        done: data.done,
+      })
+
+    } catch (error: any) {
+      // Erro vindo do Ollama
+      console.error(error)
+      if (axios.isAxiosError(error)) {
+        return res.status(500).json({
+          error: "Erro ao chamar Ollama",
+          message: error.message,
+          details: error.response?.data,
+        })
+      }
+
+      // Erro inesperado
+      res.status(500).json({
+        error: "Erro interno na IA",
+        message: error.message,
+      })
+    }
   }
-
 }
 
 export default AiService
