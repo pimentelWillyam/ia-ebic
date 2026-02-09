@@ -9,7 +9,7 @@ const aiController = new AiController()
 //criando rotas
 const aiRoutes  = express.Router()
 
-aiRoutes.post("/ai", (req: Request,res: Response) => {aiController.postaAi(req,res)})
+aiRoutes.post("/ai/generate", (req: Request,res: Response) => {aiController.postaAi(req,res)})
 
 
 export default aiRoutes
