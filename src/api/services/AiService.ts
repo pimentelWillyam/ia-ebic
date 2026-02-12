@@ -1,40 +1,48 @@
 import { Response, Request } from "express"
 import axios from "axios"
 import { Config } from "../../Config"
+import { AI_GUIDELINES } from "../../ai/AI_GUIDELINES"
 
 class AiService {
   async sendText(req: Request, res: Response) {
     try {
-      console.log('chegou aq')
-      const userPrompt = req.body.prompt ?? "Oi"
-      console.log("localhost:11434/api/generate")
-
-
       const ollamaRes = await axios.post(
-        Config.AI.URL+'/api/generate',
+        `${Config.AI.URL}/api/generate`,
         {
           model: Config.AI.MODEL,
-          prompt: "oi",
+          format: "json",
+          prompt: AI_GUIDELINES + req.body.prompt,
           stream: false,
         },
         {
           headers: {
             "Content-Type": "application/json",
           },
+          timeout: 60_000, // importante em LLM
         }
       )
 
       const data = ollamaRes.data
 
-      res.status(200).json({
-        answer: data.response,
+      let answer
+      try {
+        answer = JSON.parse(data.response)
+      } catch {
+        return res.status(500).json({
+          error: "IA retornou JSON inválido",
+          raw: data.response,
+        })
+      }
+
+      return res.status(200).json({
+        answer,
         model: data.model,
         done: data.done,
       })
 
     } catch (error: any) {
-      // Erro vindo do Ollama
       console.error(error)
+
       if (axios.isAxiosError(error)) {
         return res.status(500).json({
           error: "Erro ao chamar Ollama",
@@ -43,8 +51,7 @@ class AiService {
         })
       }
 
-      // Erro inesperado
-      res.status(500).json({
+      return res.status(500).json({
         error: "Erro interno na IA",
         message: error.message,
       })
