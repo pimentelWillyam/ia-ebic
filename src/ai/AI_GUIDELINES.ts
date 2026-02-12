@@ -28,62 +28,48 @@ Diretrizes obrigatórias:
 
 6. Formato do JSON:
 
-    interface InformacoesVitima {      
+   {      
       identidadeDesconhecida: boolean,
-      nome: string
-      nomeMae: string
-      apelido: string
-      sexo: string
-      nomeSocial: string
-      dataNascimento: Date | null
-      idadeAparente: string
-      corPele: string
-      posicaoNaQualCorpoFoiEncontrado: string
-      tipoLocalMorte: string
-      corpoEstavaVestido: string
-      dataHoraObito: Date | null
-      dataHoraObitoDesconhecida: boolean
-      naturezaOcorrencia: string
-      intencao: string
-      objetosUtilizados: string
-      informacoesComplementaresCorpo: string  
-      examesNaoSaoSolicitados: boolean
-      exameSubungueal: boolean
-      coletaDNAReferencia: boolean
-      restosMortaisNaoIdentificados: boolean
-      toxicologico: boolean
-      vaginal: boolean
-      anal: boolean
-      residuografico: boolean
-      alcoolemia: boolean
-      outrosExames: boolean
-      descricaoOutrosExames: string
-      NIC: string
-      posicaoComoCorpoFoiEncontrado: string
-      imagemIdentificadoraCorpo: string
-      PICAplicada: string
-      documentoVitima: string
-      descrevaOcorrencia: string
+      nome: string | null,
+      nomeMae: string | null,
+      apelido: string | null,
+      sexo: "MASCULINO" | "FEMININO" | "DESCONHECIDO",
+      nomeSocial: string | null,
+      dataNascimento,
+      idadeAparente,
+      corPele: "AMARELA" | "BRANCA" | "INDÍGENA" | "NEGRA" | "PARDA" | "DESCONHECIDA",
+      posicaoNaQualCorpoFoiEncontrado: "DORSAL" | "LATERAL DIREITO" | "LATERAL ESQUERDO" | "VENTRAL" | "OUTRO" | "NÃO SE APLICA",
+      tipoLocalMorte: string,
+      corpoEstavaVestido: "SIM" | "NÃO" | "PARCIALMENTE" | "NÃO SE APLICA",
+      dataHoraObito: Date | null,
+      dataHoraObitoDesconhecida: boolean,
+      naturezaOcorrencia: "A ESCLARECER" | "ACIDENTE DE TRÂNSITO" | "HOMICÍDIO" | "LATROCÍNIO" | "LESÃO CORPORAL SEG. DE MORTE" | "SUICÍDIO" | "OUTROS ACIDENTES",
+      intencao,
+      objetosUtilizados,
+      informacoesComplementaresCorpo,  
+      descrevaOcorrencia,
     }
  7. Valores possíveis:
 
     identidadeDesconhecida é false se o nome da vítima for conhecido, true caso contrário
     
-    sexo é MASCULINO, FEMININO ou DESCONHECIDO
+    sexo é MASCULINO, FEMININO ou DESCONHECIDO, você pode inferir o sexo a partir do nome ou de pronomes usados no texto, mas se não tiver certeza, use DESCONHECIDO
 
-    corPele é AMARELA, BRANCA, INDÍGENA, NEGRA, PARDA ou DESCONHECIDA
+    corPele é AMARELA, BRANCA, INDÍGENA, NEGRA, PARDA ou DESCONHECIDA, se não for possível identificar, use DESCONHECIDA
 
-    posicaoNaQualCorpoFoiEncontrado é DORSAL, LATERAL DIREITO, LATERAL ESQUERDO, VENTRAL, OUTRO ou NÃO SE APLICA
+    posicaoNaQualCorpoFoiEncontrado é DORSAL, LATERAL DIREITO, LATERAL ESQUERDO, VENTRAL, OUTRO ou NÃO SE APLICA, se não for possível identificar, use NÃO SE APLICA
 
-    tipoLocalMorte pode ser AREIA, ASFALTO, AÇUDE, BARRO, CANAVIAL, CIMENTO, LAGOA, LAMA, MANGUEZAL, MAR, MATA ou NÃO SE APLICA
+    tipoLocalMorte pode ser AREIA, ASFALTO, AÇUDE, BARRO, CANAVIAL, CIMENTO, LAGOA, LAMA, MANGUEZAL, MAR, MATA ou NÃO SE APLICA, dependendo do local onde o corpo foi encontrado, se não for possível identificar, use NÃO SE APLICA
 
-    corpoEstavaVestido pode ser SIM, NÃO, PARCIALMENTE ou NÃO SE APLICA
+    corpoEstavaVestido pode ser SIM, NÃO, PARCIALMENTE ou NÃO SE APLICA, se não for possível identificar, use NÃO SE APLICA
 
-    naturezaOcorrencia pode ser A ESCLARECER, ACIDENTE DE TRÂNSITO, HOMICÍDIO, LATROCÍNIO, LESÃO CORPORAL SEG. DE MORTE, SUICÍDIO, OUTROS ACIDENTES
+    naturezaOcorrencia pode ser A ESCLARECER, ACIDENTE DE TRÂNSITO, HOMICÍDIO, LATROCÍNIO, LESÃO CORPORAL SEG. DE MORTE, SUICÍDIO, OUTROS ACIDENTES, se não for possível identificar, use A ESCLARECER
 
-    objetosUtilizados são uma lista que pode conter ARMA BRANCA, ARMA DE FOGO, OBJETO CONTUNDENTE e NAO SE APLICA
+    intencao pode ser CULPOSO, DOLOSO ou NÃO SE APLICA, se não for possível identificar, use NÃO SE APLICA
+   
+    objetosUtilizados são uma lista que pode conter ARMA BRANCA, ARMA DE FOGO, OBJETO CONTUNDENTE e NAO SE APLICA, se não for possível identificar, use NAO SE APLICA
 
-    descrevaOcorrencia é uma descrição do que ocorreu
+    descrevaOcorrencia é uma descrição do que ocorreu, tente usar uma abordagem narrativa, mas sem adicionar informações que não estejam no texto original.
 
  abaixo virá o texto que deve ser usasdo como base para gerar o json:
 
