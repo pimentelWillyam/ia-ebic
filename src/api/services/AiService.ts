@@ -18,7 +18,6 @@ class AiService {
           headers: {
             "Content-Type": "application/json",
           },
-          timeout: 60_000, // importante em LLM
         }
       )
 
