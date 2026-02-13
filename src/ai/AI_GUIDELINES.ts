@@ -30,13 +30,13 @@ Diretrizes obrigatórias:
 
    {      
       identidadeDesconhecida: boolean,
-      nome: string | null,
-      nomeMae: string | null,
-      apelido: string | null,
+      nome: string,
+      nomeMae: string,
+      apelido: string,
       sexo: "MASCULINO" | "FEMININO" | "DESCONHECIDO",
-      nomeSocial: string | null,
-      dataNascimento,
-      idadeAparente,
+      nomeSocial: string,
+      dataNascimento: Date | null,
+      idadeAparente: number | null,
       corPele: "AMARELA" | "BRANCA" | "INDÍGENA" | "NEGRA" | "PARDA" | "DESCONHECIDA",
       posicaoNaQualCorpoFoiEncontrado: "DORSAL" | "LATERAL DIREITO" | "LATERAL ESQUERDO" | "VENTRAL" | "OUTRO" | "NÃO SE APLICA",
       tipoLocalMorte: string,
@@ -44,10 +44,10 @@ Diretrizes obrigatórias:
       dataHoraObito: Date | null,
       dataHoraObitoDesconhecida: boolean,
       naturezaOcorrencia: "A ESCLARECER" | "ACIDENTE DE TRÂNSITO" | "HOMICÍDIO" | "LATROCÍNIO" | "LESÃO CORPORAL SEG. DE MORTE" | "SUICÍDIO" | "OUTROS ACIDENTES",
-      intencao,
-      objetosUtilizados,
-      informacoesComplementaresCorpo,  
-      descrevaOcorrencia,
+      intencao: "CULPOSO" | "DOLOSO" | "NÃO SE APLICA",
+      objetosUtilizados: string[],
+      informacoesComplementaresCorpo: string,  
+      descrevaOcorrencia: string,
     }
  7. Valores possíveis:
 
