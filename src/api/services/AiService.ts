@@ -1,7 +1,7 @@
 import { Response, Request } from "express"
 import axios from "axios"
 import { Config } from "../../Config"
-import { AI_GUIDELINES } from "../../ai/AI_GUIDELINES"
+import { AiNormalizator } from "../helpers/AiNormalizator"
 
 class AiService {
   async sendText(req: Request, res: Response) {
@@ -11,7 +11,7 @@ class AiService {
         {
           model: Config.AI.MODEL,
           format: "json",
-          prompt: AI_GUIDELINES + req.body.prompt,
+          prompt: req.body.prompt,
           stream: false,
         },
         {
@@ -25,8 +25,9 @@ class AiService {
 
       let answer
       try {
-        answer = JSON.parse(data.response)
-      } catch {
+        answer = AiNormalizator.execute(JSON.parse(data.response))
+        console.log('Resposta normalizada:', answer)
+      } catch (error: any) {
         return res.status(500).json({
           error: "IA retornou JSON inválido",
           raw: data.response,
